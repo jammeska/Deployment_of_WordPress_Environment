@@ -1,0 +1,35 @@
+---
+# tasks file for apache
+- name: Install latest version of Apache
+  apt: 
+    name: apache2 
+    state: latest
+    update_cache: yes
+
+- name: create apache group
+  group:
+    name: apache
+    state: present
+
+- name: create apache user
+  user:
+    name: apache
+    group: apache
+    state: present
+
+- name: Create document root for your domain
+  file:
+    path: "/var/www/{{ http_host }}"
+    state: directory
+    owner: "apache"
+    group: "apache"
+    mode: '0755'
+
+- name: Set up Apache VirtuahHost
+  template:
+    src: "httpd.conf.j2"
+    dest: "/etc/apache2/sites-enabled/000-default.conf"
+    owner: root
+    group: root
+#    mode: u=rw,g=r,o=r
+  notify: "restart Apache service"

@@ -1,0 +1,10 @@
+# main playbook to configure wordpress in apache server
+
+- hosts: wordpress_server
+  become: yes
+  roles:
+    - apache
+    - php
+    - mysql
+    - wordpress
+

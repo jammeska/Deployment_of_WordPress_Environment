@@ -1,0 +1,26 @@
+---
+# tasks file for php
+- name: Installation install software-properties-common
+  apt: 
+    name: software-properties-common
+
+- name: "Repo PHP 7.4"
+  apt_repository:
+    repo: "ppa:ondrej/php"
+   
+- name: "Updating the repo"
+  apt: 
+   update_cache: yes
+
+- name: Installation PHP 7.4
+  apt: 
+    name: php7.4 
+    state: present
+
+- name: install lamp stack
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes 
+  loop: "{{ php_modules }}"
+

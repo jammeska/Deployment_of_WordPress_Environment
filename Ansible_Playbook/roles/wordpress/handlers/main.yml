@@ -1,0 +1,6 @@
+---
+# handlers file for wordpress
+- name: "Restart httpd service"
+  service:
+    name: apache2
+    state: restarted

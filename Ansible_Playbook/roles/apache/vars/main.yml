@@ -1,0 +1,7 @@
+---
+# vars file for apache
+#HTTP Settings
+http_host: "wp.simplilearn.project"
+http_conf: "wp.simplilearn.project.conf"
+http_port: "80"
+

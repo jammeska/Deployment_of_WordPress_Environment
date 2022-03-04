@@ -1,0 +1,8 @@
+---
+# vars file for mysql
+#MySQL Settings
+mysql_root_password: "wordpress"
+mysql_db: "wpdb"
+mysql_user: "wp_user"
+mysql_password: "wordpress"
+
